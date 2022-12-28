@@ -66,10 +66,11 @@
   <div class="relative ml-auto rounded-md shadow-sm">
     <label for="search-box" class="sr-only">Search</label>
     <input
-      class="border rounded-md py-2 px-3 block w-full pr-10 textgray-800 sm:text-sm sm:leading-5"
+      class="border rounded-md py-2 px-3 block w-full pr-10 text-gray-800 sm:text-sm sm:leading-5"
       id="search-box"
       data-test-rr="search-box"
       value={{this.searchTerm}}
+      placeholder="Search"
       {{on "input" this.updateSearchTerm}}
     />
     <div class="absolute inset-y-0 right-0 pr-3 flex items-center
@@ -85,7 +86,7 @@ pointer-events-none">
   <ul>
     {{#each this.sortedSongs as |song|}}
       <li class="mb-2" data-test-rr="song-list-item">
-        {{song.title}}
+        {{capitalize song.title}}
         <span class="float-right">
           <StarRating
             @rating={{song.rating}}
@@ -118,7 +119,7 @@ pointer-events-none">
       type="text"
       id="title"
       class="text-gray-800 bg-white rounded-md py-2 px-4"
-      placeholder="Title"
+      placeholder={{this.newSongPlaceholder}}
       value={{this.title}}
       data-test-rr="new-song-title"
       {{on "input" this.updateTitle}}
